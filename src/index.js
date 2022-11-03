@@ -20,14 +20,14 @@ class Board extends React.Component {
     
     renderSquare(i)
     {
-        return <Square />
+        return <Square value = {i} />
     }
 
     render(){
         const status = 'X'
         return(
             <div className="board">
-                <div>Next Player: {status}</div>
+                <div>Next Player: {status} </div>
                 <div className="first-row">
                     {this.renderSquare(0)}
                     {this.renderSquare(1)}
@@ -50,10 +50,22 @@ class Board extends React.Component {
 
 class Square extends React.Component
 {
+    constructor(props){
+        super(props);
+        this.state = {
+            value: null,
+        };
+    }
+
+    printClick(){
+        console.log("clicking");
+    }
     render(){
         return (
-        <button className="square">
-            {/*todo*/}
+        // <button className="square" onClick={function(){console.log("clicking");}}>
+        <button className="square" onClick={()=> this.setState({value: "X"})}>
+
+         {this.state.value}
         </button>
         );
     }
